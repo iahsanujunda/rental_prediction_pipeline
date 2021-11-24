@@ -22,12 +22,12 @@ entry_points:
         type: string
 
       min_price:
-        description: ## ADD DESCRIPTION
-        type: string
+        description: Acceptable minimum price
+        type: float
 
       max_price:
-        description: ## ADD DESCRIPTION
-        type: string
+        description: Acceptable maximum price
+        type: float
 
 
     command: >-
