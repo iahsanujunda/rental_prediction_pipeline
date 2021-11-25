@@ -36,6 +36,10 @@ def go(args):
     logger.info("Converting to datetime")
     df['last_review'] = pd.to_datetime(df['last_review'])
 
+    # Drop out of boundaries data
+    idx = df['longitude'].between(-74.25, -73.50) & df['latitude'].between(40.5, 41.2)
+    df = df[idx].copy()
+
     # Saving artifacts
     filename = "clean_sample.csv"
     logger.info("Saving artifact to wandb")
