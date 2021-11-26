@@ -1,6 +1,7 @@
 # Build an ML Pipeline for Short-Term Rental Prices in NYC
 
 > related wandb project: https://wandb.ai/junda-ia/nyc_airbnb
+
 > github repo: https://github.com/iahsanujunda/rental_prediction_pipeline
 
 You are working for a property management company renting rooms and properties for short periods of 
