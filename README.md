@@ -1,27 +1,10 @@
 # Build an ML Pipeline for Short-Term Rental Prices in NYC
 
-> related wandb project: https://wandb.ai/junda-ia/nyc_airbnb
-
-> github repo: https://github.com/iahsanujunda/rental_prediction_pipeline
-
-You are working for a property management company renting rooms and properties for short periods of 
-time on various rental platforms. You need to estimate the typical price for a given property based 
-on the price of similar properties. Your company receives new data in bulk every week. The model needs 
-to be retrained with the same cadence, necessitating an end-to-end pipeline that can be reused.
-
-In this project you will build such a pipeline.
+This project implements machine learning pipeline to predict price of short stays in airbnb. The main proposition in this project is the implementation of [mlflow](https://www.mlflow.org/) as pipeline executor tools, and [weights and biases](https://wandb.ai/) as experiment tracking tool. The modeling and feature engineering part is kept minimal to make it easy to follow.  
 
 ## Table of contents
 
 - [Introduction](#build-an-ML-Pipeline-for-Short-Term-Rental-Prices-in-NYC)
-- [Preliminary steps](#preliminary-steps)
-  * [Fork the Starter Kit](#fork-the-starter-kit)
-  * [Create environment](#create-environment)
-  * [Get API key for Weights and Biases](#get-api-key-for-weights-and-biases)
-  * [Cookie cutter](#cookie-cutter)
-  * [The configuration](#the-configuration)
-  * [Running the entire pipeline or just a selection of steps](#Running-the-entire-pipeline-or-just-a-selection-of-steps)
-  * [Pre-existing components](#pre-existing-components)
 - [Instructions](#instructions)
   * [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
   * [Data cleaning](#data-cleaning)
@@ -34,42 +17,34 @@ In this project you will build such a pipeline.
   * [Visualize the pipeline](#visualize-the-pipeline)
   * [Release the pipeline](#release-the-pipeline)
   * [Train the model on a new data sample](#train-the-model-on-a-new-data-sample)
-- [Cleaning up](#cleaning-up)
 
 ## Preliminary steps
-### Fork the Starter kit
-Go to [https://github.com/udacity/nd0821-c2-build-model-workflow-starter](https://github.com/udacity/nd0821-c2-build-model-workflow-starter)
-and click on `Fork` in the upper right corner. This will create a fork in your Github account, i.e., a copy of the
-repository that is under your control. Now clone the repository locally so you can start working on it:
+### Fork this repo
+Click on `Fork` in the upper right corner of this page. This will create a fork in your Github account, i.e., a copy of the repository that is under your control. Now clone the repository locally so you can start working on it:
 
 ```
-git clone https://github.com/[your github username]/nd0821-c2-build-model-workflow-starter.git
+git clone https://github.com/[your github username]/rental-prediction-pipeline
 ```
 
 and go into the repository:
 
 ```
-cd nd0821-c2-build-model-workflow-starter
+cd /rental-prediction-pipeline
 ```
-Commit and push to the repository often while you make progress towards the solution. Remember 
-to add meaningful commit messages.
 
 ### Create environment
-Make sure to have conda installed and ready, then create a new environment using the ``environment.yml``
-file provided in the root of the repository and activate it:
+Make sure to have conda installed and ready, then create a new environment using the ``environment.yml`` file provided in the root of the repository and activate it:
 
 ```bash
-> conda env create -f environment.yml
-> conda activate nyc_airbnb_dev
+conda env create -f environment.yml
+conda activate nyc_airbnb_dev
 ```
 
 ### Get API key for Weights and Biases
-Let's make sure we are logged in to Weights & Biases. Get your API key from W&B by going to 
-[https://wandb.ai/authorize](https://wandb.ai/authorize) and click on the + icon (copy to clipboard), 
-then paste your key into this command:
+Let's make sure we are logged in to Weights & Biases. Get API key from W&B by going to  [https://wandb.ai/authorize](https://wandb.ai/authorize) and click on the + icon (copy to clipboard), then paste your key into this command:
 
 ```bash
-> wandb login [your API key]
+wandb login [your API key]
 ```
 
 You should see a message similar to:
